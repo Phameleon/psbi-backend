@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yupi.springbootinit.mapper.ChartMapper">
+
+    <resultMap id="BaseResultMap" type="com.yupi.springbootinit.model.entity.Chart">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="goal" column="goal" jdbcType="VARCHAR"/>
+            <result property="chartData" column="chartData" jdbcType="VARCHAR"/>
+            <result property="chartType" column="chartType" jdbcType="VARCHAR"/>
+            <result property="genChart" column="genChart" jdbcType="VARCHAR"/>
+            <result property="genResult" column="genResult" jdbcType="VARCHAR"/>
+            <result property="userId" column="userId" jdbcType="BIGINT"/>
+            <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+            <result property="isDelete" column="isDelete" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,goal,chartData,
+        chartType,genChart,genResult,userId,
+        createTime,updateTime,isDelete
+    </sql>
+
+    <!-- parameterType="string" 指定参数类型  resultType="" 指定返回值类型 -->
+    <!-- 最灵活的方式 ${querySql} 直接让后端传sql ，但是存在sql注入的风险，可以在后端进行校验  （要保证一定是自己后端传的）} -->
+    <select id="queryChartData" parameterType="string" resultType="map">
+        ${querySql}
+    </select>
+</mapper>
